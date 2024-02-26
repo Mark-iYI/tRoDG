@@ -49,6 +49,7 @@ while running:
                     elif command == "toggle_draw_rects":
                         Map.draw_rects = not Map.draw_rects
                     elif command == "interaction":
+                        # ============Требуется оптимизация========
                         for obj in Map.doors:
                             x_a, y_a = Map.player.rect.center
                             x_b, y_b = obj.rect.x, obj.rect.y
@@ -58,12 +59,8 @@ while running:
                                 if type(obj) == Engine.Door:
                                     obj.interact(Map.player)
                                 break
-                    else:
-                        Map.player.move_directions[command] = True
+                        #==============================
         elif event.type == pygame.KEYUP:
-            for command, key in key_mappings.items():
-                if event.key == key:
-                    Map.player.move_directions[command] = False
             if draw_console:
                 console.event(event, Map)
         elif event.type == pygame.MOUSEBUTTONDOWN:
